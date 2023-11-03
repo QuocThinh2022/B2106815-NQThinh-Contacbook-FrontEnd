@@ -1,5 +1,6 @@
 <script>
 export default {
+    name: 'ContactCard',
     props: {
         contact: { type: Object, required: true },
     },
@@ -8,7 +9,7 @@ export default {
 
 <template>
     <div>
-        <div class="p-1">
+        <div class="p-l">
             <strong>Ten:</strong>
             {{ contact.name }}
         </div>

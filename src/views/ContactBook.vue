@@ -41,6 +41,16 @@
                     <i class="fas fa-address-card"></i>
                 </h4>
                 <ContactCard :contact="activeContact" />
+                <router-link
+                    :to="{
+                        name: 'contact.edit',
+                        params: {id:activeContact._it},
+                    }"
+                >
+                    <span class="mt-2 badge badge-warning">
+                        <i class="fas fa-edit"></i> Hieu chinh
+                    </span>
+                </router-link>
             </div>
         </div>
     </div>
@@ -53,7 +63,7 @@ import ContactList from "../components/ContactList.vue";
 import ContactService from "../services/contact.service";
 
 export default {
-    conmpnents: {
+    components: {
         ContactCard,
         InputSearch,
         ContactList,
@@ -75,22 +85,22 @@ export default {
     },
     computed: {
         // Chuyen cac doi tuong contact thanh chuoi de tien cho tim kiem
-        contactString() {
+        contactStrings() {
             return this.contacts.map((contact) => {
                 const { name, email, address, phone } = contact;
                 return [name, email, address, phone].join("");
             });
         },
         //Tra ve cac contact co chua thong tin can tim kiem
-        filterdContacts() {
+        filteredContacts() {
             if (!this.searchText) return this.contacts;
-            return this.contact.filter((_contact, index) => this.contactStrings[index].includes(this.searchText));
+            return this.contacts.filter((_, index) => this.contactStrings[index].includes(this.searchText));
         },
         activeContact() {
             if (this.activeIndex < 0) return null;
             return this.filteredContacts[this.activeIndex];
         },
-        filteredContactCount() {
+        filteredContactsCount() {
             return this.filteredContacts.length;
         },
     },
@@ -102,8 +112,8 @@ export default {
                 console.log(error);
             }
         },
-        refreshList() {
-            this.retrieveContacts();
+        async refreshList() {
+            await this.retrieveContacts();
             this.activeIndex = -1;
         },
 

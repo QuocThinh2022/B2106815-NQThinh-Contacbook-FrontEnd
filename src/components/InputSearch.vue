@@ -3,6 +3,7 @@ export default {
     props: {
         modeValue: { type: String, default: "" },
     },
+    name: 'InputSearch',
     emits: ["submit", "update:modelValue"],
     methods: {
         updateModelValue(e) {
@@ -16,7 +17,7 @@ export default {
 </script>
 
 <template>
-    <div class="imput-group">
+    <div class="input-group">
         <input
             type="text"
             class="form-control"
@@ -24,7 +25,7 @@ export default {
             :value="modeValue"
             @input="updateModeValue"
             @keyup.enter="submit"
-        />
+        >
         <div class="input-group-append">
             <button
                 class="btn btn-outline-secondary"
