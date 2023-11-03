@@ -1,5 +1,5 @@
 
-import ContactList from '../components/ContactList.vue';
+
 
 <template>
     <div class="page row">
@@ -47,10 +47,10 @@ import ContactList from '../components/ContactList.vue';
 </template>
 
 <script>
-import ContactCard from "@/components/ContactCard.vue";
-import InputSearch from "@/components/InputSearch.vue";
-import ContactList from "@/components/ContactList.vue";
-import ContactService from "@/services/contact.service";
+import ContactCard from "../components/ContactCard.vue";
+import InputSearch from "../components/InputSearch.vue";
+import ContactList from "../components/ContactList.vue";
+import ContactService from "../services/contact.service";
 
 export default {
     conmpnents: {
